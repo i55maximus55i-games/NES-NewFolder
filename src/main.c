@@ -8,6 +8,7 @@
 #include "scenes/scene.h"
 #include "scenes/scene_title.h"
 #include "scenes/scene_mainmenu.h"
+#include "scenes/scene_game.h"
 
 extern unsigned char current_game_state;
 
