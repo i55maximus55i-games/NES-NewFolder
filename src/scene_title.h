@@ -2,7 +2,7 @@
 #define _SCENE_TITLE_H_
 
 #include "scene.h"
-#include "../utils/render_utils.h"
+#include "render_utils.h"
 
 extern unsigned char x, y, i;
 extern char lang_title_new_folder_1[];
@@ -33,7 +33,7 @@ void scene_title_start()
 
     wait_for_vblank();
     PPU_MASK = MASK_SHOW_BG | MASK_SHOW_SPRITE | MASK_SHOW_LEFT_BG | MASK_SHOW_LEFT_SPRITE;
-    PPU_CTRL = CTRL_NAMETABLE_2000 | CTRL_INCREMENT_1 | CTRL_SPRITE_1000 | CTRL_BG_0000 | CTRL_SPRITE_8x8 | CTRL_NMI_ENABLE;
+    PPU_CTRL = CTRL_NAMETABLE_2000 | CTRL_INCREMENT_1 | CTRL_SPRITE_0000 | CTRL_BG_1000 | CTRL_SPRITE_8x8 | CTRL_NMI_ENABLE;
     PPU_SCROLL = 0; PPU_SCROLL = 0;
 
     i = 0;
@@ -44,17 +44,20 @@ void scene_title_render()
 {
     while (1)
     {
-        wait_for_nmi();
         ++i;
-        if (i > 180)
+        if (i > 1)
         {
             break;
         }
+        wait_for_nmi();
     }
     set_scene(&scene_mainmenu);
 }
 
-void scene_title_end() {}
+void scene_title_end()
+{
+    famistudio_music_pause(FAMISTUDIO_PAUSE);
+}
 
 struct scene scene_title = { scene_title_start, scene_title_render, scene_title_end };
 

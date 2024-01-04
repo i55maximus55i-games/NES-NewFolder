@@ -2,13 +2,12 @@
 #include "rapidfire.h"
 #include "famistudio.h"
 
-#include "utils/render_utils.h"
-#include "utils/phys_x.h"
+#include "render_utils.h"
 
-#include "scenes/scene.h"
-#include "scenes/scene_title.h"
-#include "scenes/scene_mainmenu.h"
-#include "scenes/scene_game.h"
+#include "scene.h"
+#include "scene_title.h"
+#include "scene_mainmenu.h"
+#include "scene_game.h"
 
 extern unsigned char current_game_state;
 
@@ -25,7 +24,7 @@ void main(void)
 {
     render_disable();
 
-    famistudio_init(FAMISTUDIO_PLATFORM_PAL, music_data_untitled);
+    famistudio_init(FAMISTUDIO_PLATFORM_NTSC, music_data_untitled);
 
     // Начальная сцена - экран заставки
     current_scene.start_scene = scene_title.start_scene;
@@ -34,7 +33,8 @@ void main(void)
 
     current_scene.start_scene();
 
-    while (1) {
+    while (1)
+    {
         current_scene.render_scene();
     }
 }

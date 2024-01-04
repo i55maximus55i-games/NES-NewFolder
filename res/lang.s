@@ -180,3 +180,7 @@ _lang_title_new_folder_5:
 _lang_title_new_folder_6:
     .export _lang_title_new_folder_6
     .byte "Игра разработана командой       [Новая папка (2)] в составе из: 55_maximus_55\\"
+
+_lang_mainmenu_help:
+    .export _lang_mainmenu_help
+    .byte "Главное меню нахуй\\"

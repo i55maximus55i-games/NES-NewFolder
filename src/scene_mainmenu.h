@@ -2,7 +2,11 @@
 #define _SCENE_MAINMENU_H_
 
 #include "scene.h"
-#include "../utils/render_utils.h"
+#include "render_utils.h"
+
+extern struct scene scene_game;
+
+extern char lang_mainmenu_help[];
 
 void scene_mainmenu_start() {
     render_disable();
@@ -14,14 +18,16 @@ void scene_mainmenu_start() {
     PPU_CTRL = CTRL_NAMETABLE_2000 | CTRL_INCREMENT_1 | CTRL_SPRITE_1000 | CTRL_BG_0000 | CTRL_SPRITE_8x8 | CTRL_NMI_ENABLE;
     PPU_SCROLL = 0; PPU_SCROLL = 0;
 
-    i = 0;
+    PPU_ADDR = 0x20; PPU_ADDR = 0x20; print_string(lang_mainmenu_help);
 }
 void scene_mainmenu_render() 
 {
     while (1)
     {
+        break;
         wait_for_nmi();
     }
+    set_scene(&scene_game);
 }
 void scene_mainmenu_end() {}
 
