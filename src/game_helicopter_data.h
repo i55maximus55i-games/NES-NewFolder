@@ -1,6 +1,19 @@
-#ifndef _HELICOPTER_H_
-#define _HELICOPTER_H_
+#ifndef _HELICOPTER_DATA_H_
+#define _HELICOPTER_DATA_H_
 
+
+#define HELICOPTER_STATE_ENTRY          0
+#define HELICOPTER_STATE_TARAN          1
+#define HELICOPTER_STATE_BURST_NAHUI    2
+
+struct helicopter
+{
+    unsigned char x, y;
+    unsigned char state;
+    unsigned char substate;
+    unsigned char timer;
+    unsigned char t;
+};
 
 /*
     Босс вертолет:

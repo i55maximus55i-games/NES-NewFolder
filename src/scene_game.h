@@ -5,16 +5,11 @@
 #include "render_utils.h"
 #include "game_cycle.h"
 
-extern char nmi_oam_enable;
-#pragma zpsym ("nmi_oam_enable");
 
-typedef struct {
-    unsigned char y;
-    unsigned char tile_index;
-    unsigned char attributes;
-    unsigned char x;
-} sprite_t;
-extern sprite_t oam_shadow[];
+struct player player_1;
+struct helicopter helicopter_1;
+struct bullet bullets[BULLETS_MAX_COUNT];
+
 
 void scene_game_start() {
     render_disable();
@@ -26,30 +21,13 @@ void scene_game_start() {
     PPU_CTRL = CTRL_NAMETABLE_2000 | CTRL_INCREMENT_1 | CTRL_SPRITE_0000 | CTRL_BG_1000 | CTRL_SPRITE_8x16 | CTRL_NMI_ENABLE;
     PPU_SCROLL = 0; PPU_SCROLL = 0;
 
-
+    // TODO: reset game
 }
 void scene_game_render() 
 {
     while (1)
     {
-        // TODO:
-        /*
-            Player:
-                movement
-                shoot
-                sprite
-
-            Enemy
-            Helicopter
-
-            Camera
-            Levels
-        */
         game_update();
-
-        nmi_oam_enable = 0x02;
-
-        wait_for_nmi();
     }
 }
 void scene_game_end() {}

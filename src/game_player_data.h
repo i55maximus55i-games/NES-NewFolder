@@ -1,11 +1,11 @@
-#ifndef _PLAYER_H_
-#define _PLAYER_H_
+#ifndef _PLAYER_DATA_H_
+#define _PLAYER_DATA_H_
+
 
 struct player
 {
-    unsigned char direction;
-    unsigned char health;
-    unsigned char shoot_delay;
+    unsigned char x, y;
 };
+
 
 #endif

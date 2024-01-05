@@ -9,13 +9,13 @@
 #include "scene_mainmenu.h"
 #include "scene_game.h"
 
+
 extern unsigned char current_game_state;
 
-
+unsigned char bullet_oam_index;
 unsigned char i, j;
 unsigned char x, y;
 unsigned char nametable;
-
 
 extern unsigned char music_data_untitled[];
 
